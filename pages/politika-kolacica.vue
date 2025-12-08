@@ -92,6 +92,21 @@ import { InfoLinks } from '#components';
                         liste želja, i generalnog procesa kupnje. Kolačići su nužni za normalan rad web stranice.
                     </td>
                 </tr>
+                <tr class="border-b border-gray-300 text-left align-top">
+                    <td class="py-7">Microsoft Clarity</td>
+                    <td class="py-7 leading-[2.5]">
+                       CLID <br>
+                       ANONCHK <br>
+                       MR <br>
+                       MUID <br>
+                       SM
+                    </td>
+                    <td class="py-7">
+                        Koristi kolačiće i druge tehnologije za analitičko praćenje anonimnog ponašanja korisnika (npr. pomicanje stranice, klikovi i kretanje miša), što nam pomaže razumjeti kako 
+                        posjetitelji koriste naše sadržaje i poboljšati funkcionalnost stranice. Prikupljeni podaci ne omogućuju identifikaciju pojedinačnih korisnika, 
+                        a njihova obrada provodi se u skladu s Microsoftovom Politikom privatnosti i našom Politikom privatnosti.
+                    </td>
+                </tr>
             </tbody>
         </table>
 
