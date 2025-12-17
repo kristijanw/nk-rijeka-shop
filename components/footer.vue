@@ -19,13 +19,13 @@
                     </div>
 
                     <div class="col-span-1">
-                        <p class="font-normal text-blue-900 font-roboto text-body2 max-xl:text-center">
+                        <p class="font-normal text-blue-900 font-roboto text-body2 max-xl:text-center md:ml-2 ml-0">
                             Učlani se u klub i ostvari popuste u našem WEB SHOPU i FAN SHOPU, na kupnju ulaznica te na
                             proizvode i usluge naših partnera.
                         </p>
                     </div>
 
-                    <div class="col-span-1">
+                    <div class="col-span-1 text-right">
                         <a
                             href="/register/"
                             id="btn-register"
