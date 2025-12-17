@@ -25,10 +25,10 @@ const options = computed(() => [
         value: 'free',
         label: 'Besplatna dostava iznad 50 €',
     },
-    {
-        value: 'paket24',
-        label: 'PAKET24 HRVATSKE POŠTE: ' + fmt(cartStore.paket24) + ' €',
-    },
+    // {
+    //     value: 'paket24',
+    //     label: 'PAKET24 HRVATSKE POŠTE: ' + fmt(cartStore.paket24) + ' €',
+    // },
 ])
 
 const selected = computed({
