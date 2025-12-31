@@ -2,6 +2,7 @@ import { ref, onMounted, computed, watch } from 'vue'
 import { type IProduct } from '@/types/product'
 import { defineStore } from 'pinia'
 import { type ICoupon } from '@/types/coupon'
+import type { IUser } from '@/types/user'
 
 interface CartProduct extends IProduct {
     variationId?: number
@@ -237,7 +238,8 @@ export const useCartStore = defineStore('cart_product', () => {
     const totalPriceQuantity = computed(() => {
         return cart_products.value.reduce(
             (cartTotal, cartItem) => {
-                const { totalPrice, orderQuantity } = cartItem
+                const { totalPrice, orderQuantity, price } = cartItem
+
                 if (typeof orderQuantity !== 'undefined' && typeof totalPrice !== 'undefined') {
                     const itemTotal = totalPrice * orderQuantity
                     cartTotal.total += itemTotal
@@ -245,10 +247,21 @@ export const useCartStore = defineStore('cart_product', () => {
                 }
 
                 if (coupon.value) {
-                    if (coupon.value.type === 'percentage') {
-                        cartTotal.total = cartTotal.total * (1 - coupon.value.discount / 100)
+					const user = useSanctumUser() as Ref<IUser | null>
+                  
+                    // If user is member apply regular price
+                    if(user.value?.role === 'member') {
+                      if (coupon.value.type === 'percentage') {
+                        cartTotal.total = price * (1 - coupon.value.discount / 100)
+                      } else {
+                        cartTotal.total = price - coupon.value.discount
+                      }
                     } else {
-                        cartTotal.total = cartTotal.total - coupon.value.discount
+                      if (coupon.value.type === 'percentage') {
+                        cartTotal.total = cartTotal.total * (1 - coupon.value.discount / 100)
+                      } else {
+						cartTotal.total = cartTotal.total - coupon.value.discount
+                      }
                     }
                 }
 

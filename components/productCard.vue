@@ -142,7 +142,16 @@ const addToCart = () => {
                 </NuxtLink>
 
                 <div
-                    v-if="product.quantity_sum <= 0"
+                    v-if="
+                        product.variations?.length &&
+                        product.variations?.reduce((sum, variation) => sum + variation.quantity, 0) <= 0
+                    "
+                    class="bg-red-500 font-saira font-semibold text-white rounded-md py-2 sm:text-[15px] text-[10px]"
+                >
+                    RASPRODANO
+                </div>
+                <div
+                    v-if="product.variations?.length === 0 && product.quantity <= 0"
                     class="bg-red-500 font-saira font-semibold text-white rounded-md py-2 sm:text-[15px] text-[10px]"
                 >
                     RASPRODANO

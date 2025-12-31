@@ -369,8 +369,8 @@ const submitSearch = () => {
 .bg-players::after {
     position: absolute;
     content: url('/assets/images/players-home.png');
-    right: 13%;
-    top: 12%;
+    right: 24%;
+    top: 19%;
     z-index: 0;
 }
 
@@ -382,7 +382,7 @@ const submitSearch = () => {
 
 @media (max-width: 1650px) {
         .bg-players::after {
-        content: url('/assets/images/players-laptop.png');
+        content: url('/assets/images/players-home.png');
         top: 25%;
         right: 10%;
     }

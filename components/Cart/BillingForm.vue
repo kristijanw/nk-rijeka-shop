@@ -2,7 +2,7 @@
 import countriesJson from '@/assets/countries.json'
 
 defineProps<{
-    form
+    form: any
 }>()
 
 const countries = countriesJson.map((c) => ({

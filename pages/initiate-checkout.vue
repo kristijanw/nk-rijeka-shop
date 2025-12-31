@@ -131,15 +131,32 @@ const paymentOptions = computed(() => {
 })
 
 watch(
-    [() => state.country, () => cartStore.cartHasPersonalization],
+    [() => state.country, () => state.anotherCountry, () => cartStore.cartHasPersonalization],
     (val) => {
         if (!isCroatia.value || cartStore.cartHasPersonalization) {
             selectedPaymentMethod.value = 'card'
         }
 
         cartStore.setDestinationCountry(val[0] || 'HR')
+
+        if (val[1] !== undefined) {
+            cartStore.setDestinationCountry(val[1])
+        }
     },
     { immediate: true }
+)
+
+watch(
+    () => state.anotherAddress,
+    (val) => {
+        if (!val) {
+            state.anotherCountry = undefined
+            state.anotherCity = undefined
+            state.anotherZipCode = undefined
+            state.anotherStreetAddress = undefined
+            state.anotherCompany = undefined
+        }
+    }
 )
 
 const submitForm = () => formRef.value?.submit()
