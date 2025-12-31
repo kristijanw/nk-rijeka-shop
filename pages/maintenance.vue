@@ -10,14 +10,10 @@ useSeoMeta({
 
 <template>
     <div class="maintenance">
-        <img
-            title="HNK Rijeka Web Shop"
-            alt="HNK Rijeka Web Shop"
-            src="https://staging.shop.nk-rijeka.hr/wp-content/uploads/2021/08/logo-blue.svg"
-            class="logo"
-        />
+        <img title="HNK Rijeka Web Shop" alt="HNK Rijeka Web Shop"
+            src="https://staging.shop.nk-rijeka.hr/wp-content/uploads/2021/08/logo-blue.svg" class="logo" />
 
-        <h1 class="text-2xl font-bold font-oswald text-blue-900 mt-4">Tehničko održavanje u tijeku</h1>
+        <h1 class="text-2xl font-bold font-oswald text-blue-900 mt-4">Vraćamo se 8.1.2026</h1>
     </div>
 </template>
 
