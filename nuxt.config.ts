@@ -66,7 +66,7 @@ export default defineNuxtConfig({
             url: process.env.API_URL || 'https://backend.shop.nk-rijeka.hr/api/v1',
             siteUrl: 'https://shop.nk-rijeka.hr',
             token: process.env.TOKEN || 'qwertyuiopasdfghjklzxcvbnm123456',
-            maintenanceMode: process.env.MAINTENANCE_MODE || 'true',
+            maintenanceMode: process.env.MAINTENANCE_MODE || 'false',
             maintenanceBypassToken:
                 process.env.MAINTENANCE_BYPASS_TOKEN ||
                 'N2glgJ0v8I3YjGQX0Op2aB7WQV1EnBhrMa4P546spbGp3tK5GSOtlmaGXj7IhON9',
