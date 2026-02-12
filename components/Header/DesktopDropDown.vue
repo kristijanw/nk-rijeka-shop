@@ -176,6 +176,9 @@ const isInputActive = ref(false)
                         <li class="heading-sub">
                             <a href="/c/pokloni/skolski-asortiman" @click="closeTabMenu">Školski asortiman</a>
                         </li>
+                        <li class="heading-sub">
+                            <a href="/c/pokloni/maske-za-mobitel" @click="closeTabMenu">Maske za mobitel</a>
+                        </li>
                         <li class="heading-sub"><a href="/c/pokloni/dom" @click="closeTabMenu">Dom</a></li>
                         <li class="heading-sub">
                             <a href="/c/pokloni/privjesci" @click="closeTabMenu">Privjesci</a>
