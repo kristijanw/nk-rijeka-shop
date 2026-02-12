@@ -42,13 +42,26 @@ const subcategories = computed(() => {
 
   /*reverse*/
   const slug = props.category.slug?.toLowerCase() || ''
-  const shouldReverse = slug === 'pokloni' || slug === 'joma'
+  const shouldReverse = slug === 'joma'
 
   let orderedSubcats = shouldReverse ? subcats.slice().reverse() : subcats
 
-  /*custom*/
+  /*custom - odjeca*/
   if (slug === 'odjeca') {
     const customOrder = ['hoodice', 't-shirt-i-polo-majice', 'hlace-odjeca',  'ostalo-odjeca']
+
+    const inOrder = customOrder
+      .map(key => orderedSubcats.find(sc => sc.slug === key))
+      .filter((sc): sc is typeof orderedSubcats[number] => sc !== undefined)
+
+    const others = orderedSubcats.filter(sc => !customOrder.includes(sc.slug || ''))
+
+    orderedSubcats = [...inOrder, ...others]
+  }
+
+  /* custom - pokloni */
+  if (slug === 'pokloni') {
+    const customOrder = ['skolski-asortiman', 'maske-za-mobitel', 'dom', 'privjesci', 'zastave', 'cestitke', 'ostalo'] 
 
     const inOrder = customOrder
       .map(key => orderedSubcats.find(sc => sc.slug === key))
