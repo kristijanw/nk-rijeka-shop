@@ -346,6 +346,7 @@
                             </li>
                             <template v-if="activeTab === 'pokloni'">
                                 <li class="pl-5 font-normal heading-sub"><a href="/c/pokloni/skolski-asortiman" @click="closeTabMenu">Školski asortiman</a></li>
+                                <li class="pl-5 font-normal heading-sub"><a href="/c/pokloni/maske-za-mobitel" @click="closeTabMenu">Maske za mobitel</a></li>
                                 <li class="pl-5 font-normal heading-sub"><a href="/c/pokloni/dom" @click="closeTabMenu">Dom</a></li>
                                 <li class="pl-5 font-normal heading-sub"><a href="/c/pokloni/privjesci" @click="closeTabMenu">Privjesci</a></li>
                                 <li class="pl-5 font-normal heading-sub"><a href="/c/pokloni/zastave" @click="closeTabMenu">Zastave</a></li>
