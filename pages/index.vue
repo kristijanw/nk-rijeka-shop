@@ -38,10 +38,10 @@ const submitSearch = () => {
             <div class="w-full lg:w-1/2">
                 <img src="~/assets/images/players-home.png" class="block lg:hidden pb-5" />
                 <div class="px-5 sm:px-0">
-                    <h1 class="font-bold font-saira text-h1-display text-neutralBlue-950">POGLEDAJ NOVE DRESOVE</h1>
+                    <h1 class="font-bold font-saira text-h1-display text-neutralBlue-950">50% POPUSTA NA DRESOVE 25/26</h1>
                     <p class="mt-2 mb-6 font-normal text-gray-900 font-roboto text-body1">
-                        Prepoznatljiv dizajnerski potpis Juraja Zigmana <br class="hidden sm:block" />
-                        ponovno donosi svježinu i inovaciju našim dresovima.
+                        Domaći i gostujući dresovi prošlosezonske <br class="hidden sm:block" />
+                        kolekcije sada su dostupni uz 50% popusta.
                     </p>
                     <a
                         href="/c/dresovi/2025-2026/"
