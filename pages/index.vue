@@ -36,15 +36,15 @@ const submitSearch = () => {
     <div class="px-0 sm:px-5 bg-top bg-no-repeat bg-auto pt-32 lg:pt-72 pb-74 bg-home1 bg-players">
         <div class="container mx-auto xl:max-w-[1120px] relative z-[1] px-0 sm:px-5 xl:px-2">
             <div class="w-full lg:w-1/2">
-                <img src="~/assets/images/players-home.png" class="block lg:hidden pb-5" />
+                <img src="~/assets/images/home-header/nk-rijeka-homepage-cover-26-mobile.webp" class="block lg:hidden pb-5 mx-auto" />
                 <div class="px-5 sm:px-0">
-                    <h1 class="font-bold font-saira text-h1-display text-neutralBlue-950">50% POPUSTA NA DRESOVE 25/26</h1>
-                    <p class="mt-2 mb-6 font-normal text-gray-900 font-roboto text-body1">
-                        Domaći i gostujući dresovi prošlosezonske <br class="hidden sm:block" />
-                        kolekcije sada su dostupni uz 50% popusta.
+                    <h1 class="font-bold font-saira text-h1-display text-neutralBlue-950">Novi dresovi u prodaji!</h1>
+                    <p class="my-6 font-normal text-gray-900 font-roboto text-body1">
+                        Premijera domaćih i gostujućih <br class="hidden sm:block" />
+                        dresova za sezonu 2026./2027.
                     </p>
                     <a
-                        href="/c/dresovi/2025-2026/"
+                        href="/c/dresovi/2026-2027/"
                         id="btn-buy-now"
                         data-location="home-banner"
                         class="uppercase btn-primary large"
@@ -368,7 +368,7 @@ const submitSearch = () => {
 
 .bg-players::after {
     position: absolute;
-    content: url('/assets/images/players-home.png');
+    content: url('/assets/images/home-header/nk-rijeka-homepage-cover-26.webp');
     right: 24%;
     top: 19%;
     z-index: 0;
@@ -382,7 +382,7 @@ const submitSearch = () => {
 
 @media (max-width: 1650px) {
         .bg-players::after {
-        content: url('/assets/images/players-home.png');
+        content: url('/assets/images/home-header/nk-rijeka-homepage-cover-26.webp');
         top: 25%;
         right: 10%;
     }

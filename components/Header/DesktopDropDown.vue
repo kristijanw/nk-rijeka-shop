@@ -52,6 +52,7 @@ const isInputActive = ref(false)
                     id="dresovi"
                 >
                     <ul class="flex flex-col gap-3">
+                        <li class="heading-sub"><a href="/c/dresovi/2026-2027" @click="closeTabMenu">2026./2027.</a></li>
                         <li class="heading-sub"><a href="/c/dresovi/2025-2026" @click="closeTabMenu">2025./2026.</a></li>
                         <li class="heading-sub"><a href="/c/dresovi/2024-2025" @click="closeTabMenu">2024./2025.</a></li>
                         <li class="heading-sub"><a href="/c/dresovi/starije-sezone" @click="closeTabMenu">Starije sezone</a></li>
