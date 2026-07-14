@@ -434,7 +434,7 @@ const twitterShare = computed(
 
                 <div class="pt-6 pb-7">
                     <p class="font-normal text-blue-900 font-roboto text-body3">
-                        * Personalizacija dresova i hlačica tiska se po fontu sezone 2025/26<br /><br />
+                        * Personalizacija dresova i hlačica tiska se po fontu sezone 2026/27<br /><br />
                         * Molimo da prilikom preuzimanja pošiljke, u prisustvu djelatnika Hrvatske pošte, utvrdite
                         eventualna oštećenja ili manjkavost.
                     </p>
