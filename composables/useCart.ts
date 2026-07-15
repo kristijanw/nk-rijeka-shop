@@ -2,7 +2,6 @@ import { ref, onMounted, computed, watch } from 'vue'
 import { type IProduct } from '@/types/product'
 import { defineStore } from 'pinia'
 import { type ICoupon } from '@/types/coupon'
-import type { IUser } from '@/types/user'
 
 interface CartProduct extends IProduct {
     variationId?: number
@@ -235,33 +234,51 @@ export const useCartStore = defineStore('cart_product', () => {
 
     const initialOrderQuantity = () => (orderQuantity.value = 1)
 
+    // Provjeri je li stavka u nekoj od kategorija na koje se popust primjenjuje (dresovi).
+    const itemMatchesScope = (item: CartProduct, scopeIds: number[]) => {
+        const cats = (item as any).category || []
+        return cats.some((cat: any) =>
+            scopeIds.includes(cat.id) ||
+            (cat.children || []).some((child: any) => scopeIds.includes(child.id))
+        )
+    }
+
+    // Puna (standardna) cijena stavke — bez članske i akcijske cijene, bez personalizacije.
+    // Koristi se za eksterni (Sportify) popust koji se računa na punu cijenu.
+    const fullUnitPrice = (item: CartProduct) => {
+        if (item.variationId) {
+            const v = item.variations?.find((variation) => variation.id === item.variationId)
+            if (v && typeof v.price === 'number') return v.price
+        }
+        return item.price
+    }
+
     const totalPriceQuantity = computed(() => {
-        return cart_products.value.reduce(
+        // Eksterni (Sportify) kupon vrijedi samo na određene kategorije (dresovi).
+        const isCategoryScoped = !!coupon.value && coupon.value.scope === 'category'
+        const scopeIds: number[] = isCategoryScoped ? (coupon.value?.scope_category_ids || []) : []
+
+        const result = cart_products.value.reduce(
             (cartTotal, cartItem) => {
-                const { totalPrice, orderQuantity, price } = cartItem
+                const { totalPrice, orderQuantity } = cartItem
 
                 if (typeof orderQuantity !== 'undefined' && typeof totalPrice !== 'undefined') {
-                    const itemTotal = totalPrice * orderQuantity
-                    cartTotal.total += itemTotal
                     cartTotal.quantity += orderQuantity
-                }
 
-                if (coupon.value) {
-					const user = useSanctumUser() as Ref<IUser | null>
-                  
-                    // If user is member apply regular price
-                    if(user.value?.role === 'member') {
-                      if (coupon.value.type === 'percentage') {
-                        cartTotal.total = price * (1 - coupon.value.discount / 100)
-                      } else {
-                        cartTotal.total = price - coupon.value.discount
-                      }
+                    if (isCategoryScoped && coupon.value && itemMatchesScope(cartItem, scopeIds)) {
+                        // Dres pod Sportify kodom: popust ide na PUNU cijenu (bez članske/akcijske) —
+                        // popusti se NE zbrajaju. Personalizacija se ne umanjuje.
+                        const full = fullUnitPrice(cartItem)
+                        const personalization = cartItem.personalizationPrice || 0
+
+                        const discountedUnit = coupon.value.type === 'percentage'
+                            ? full * (1 - coupon.value.discount / 100)
+                            : Math.max(0, full - coupon.value.discount)
+
+                        cartTotal.total += (discountedUnit + personalization) * orderQuantity
                     } else {
-                      if (coupon.value.type === 'percentage') {
-                        cartTotal.total = cartTotal.total * (1 - coupon.value.discount / 100)
-                      } else {
-						cartTotal.total = cartTotal.total - coupon.value.discount
-                      }
+                        // Sve ostalo (i članska/akcijska cijena) ostaje kako je izračunato u totalPrice.
+                        cartTotal.total += totalPrice * orderQuantity
                     }
                 }
 
@@ -272,6 +289,18 @@ export const useCartStore = defineStore('cart_product', () => {
                 quantity: 0,
             }
         )
+
+        // Interni kupon (bez scope-a) — primjenjuje se JEDNOM na cijelu košaricu
+        // (izbjegava se složeno množenje popusta po svakoj stavci).
+        if (coupon.value && !isCategoryScoped) {
+            const discount = coupon.value.type === 'percentage'
+                ? result.total * (coupon.value.discount / 100)
+                : coupon.value.discount
+
+            result.total = Math.max(0, result.total - discount)
+        }
+
+        return result
     })
 
     // ---------------------------

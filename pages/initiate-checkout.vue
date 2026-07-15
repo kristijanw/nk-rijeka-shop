@@ -181,6 +181,7 @@ async function handleOnSubmit(event: FormSubmitEvent<Schema>) {
         total: cartStore.totalPriceQuantity.total.toFixed(2),
         totalWithDelivery: cartStore.totalPriceWithDelivery.toFixed(2),
         paymentMethod: selectedPaymentMethod.value,
+        couponCode: cartStore.coupon?.code ?? null,
     }
 
     api.post('/create-orders', { ...params })

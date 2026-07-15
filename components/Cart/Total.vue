@@ -92,7 +92,10 @@ const selected = computed({
             <p class="text-green-500 pt-2">Kupon iskorišten</p>
 
             <div class="flex items-center justify-between gap-2 pt-2">
-                <span>Popust kupona: </span>
+                <span>
+                    Popust kupona:
+                    <span v-if="cartStore.coupon.scope === 'category'" class="text-sm text-gray-500">(samo na dresove)</span>
+                </span>
                 <span>
                     -{{ cartStore.coupon.discount }}<span v-if="cartStore.coupon.type === 'percentage'">%</span
                     ><span v-else>€</span>
