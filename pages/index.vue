@@ -36,7 +36,7 @@ const submitSearch = () => {
     <div class="px-0 sm:px-5 bg-top bg-no-repeat bg-auto pt-32 lg:pt-72 pb-74 bg-home1 bg-players">
         <div class="container mx-auto xl:max-w-[1120px] relative z-[1] px-0 sm:px-5 xl:px-2">
             <div class="w-full lg:w-1/2">
-                <img src="~/assets/images/home-header/nk-rijeka-homepage-cover-26-mobile.webp" class="block lg:hidden pb-5 mx-auto" />
+                <img src="~/assets/images/home-header/nk-rijeka-shop-cover-375-mobile.webp" class="block lg:hidden pb-5 mx-auto" />
                 <div class="px-5 sm:px-0">
                     <h1 class="font-bold font-saira text-h1-display text-neutralBlue-950">Novi dresovi u prodaji!</h1>
                     <p class="my-6 font-normal text-gray-900 font-roboto text-body1">
@@ -368,7 +368,7 @@ const submitSearch = () => {
 
 .bg-players::after {
     position: absolute;
-    content: url('/assets/images/home-header/nk-rijeka-homepage-cover-26.webp');
+    content: url('/assets/images/home-header/nk-rijeka-shop.cover-desktop.webp');
     right: 24%;
     top: 19%;
     z-index: 0;
@@ -382,7 +382,7 @@ const submitSearch = () => {
 
 @media (max-width: 1650px) {
         .bg-players::after {
-        content: url('/assets/images/home-header/nk-rijeka-homepage-cover-26.webp');
+        content: url('/assets/images/home-header/nk-rijeka-shop.cover-desktop.webp');
         top: 25%;
         right: 10%;
     }
